@@ -1,0 +1,20 @@
+﻿@model IEnumerable<Abyster.Models.Reservation>
+
+@{
+    ViewData["Title"] = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var name = Model.First().Parking.Name;
+}
+
+<h1>Tikets du parking @name</h1>
+
+
+@foreach (var item in Model) {
+
+    <ul>
+        <li>@Html.DisplayFor(modelItem => item.Ticket.Numero)
+            ||@Ticket.state(item.Ticket.isUsed)
+            || <a asp-action="Details" asp-route-id="@item.Id">Details</a> </li>
+    </ul>
+
+}
